@@ -9,7 +9,7 @@ on:
 jobs:
   build:
 
-    runs-on:cypress-io/github-action@v6
+    runs-on:
 
     steps:
     - uses: actions/checkout@v4
