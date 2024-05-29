@@ -1,4 +1,4 @@
-name: Jekyll site CI
+name: cicd pipeline flow
 
 on:
   push:
