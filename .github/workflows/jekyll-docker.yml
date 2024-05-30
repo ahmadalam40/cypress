@@ -20,24 +20,28 @@
 #         jekyll/builder:latest /bin/bash -c "chmod -R 777 /srv/jekyll && jekyll build --future"
 #         name: Cypress CI
 
-on:
-  push:
-    branches:
-      - main
-  pull_request:
-    branches:
-      - main
+stages:
+  - test
+  - build
+  - deploy
 
-jobs:
-  build:
-    runs-on: ubuntu-latest
+test:
+  stage: test
+  script:
+    - ./run_tests.sh
+  tags:
+    - docker
 
-    steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
+build:
+  stage: build
+  script:
+    - ./build.sh
+  tags:
+    - docker
 
-    - name: Install dependencies
-      run: npm install
-
-    - name: Run Cypress tests
-      run: npm run test:cypress
+deploy:
+  stage: deploy
+  script:
+    - ./deploy.sh
+  tags:
+    - docker
