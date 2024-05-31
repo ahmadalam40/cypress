@@ -39,7 +39,7 @@ context('Actions', () => {
     cy.get('.action-focus').should('have.class', 'focus')
       .prev().should('have.attr', 'style', 'color: orange;')
   })
-
+//
   it('.blur() - blur off a DOM element', () => {
     // https://on.cypress.io/blur
     cy.get('.action-blur').type('About to blur')
